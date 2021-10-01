@@ -6,10 +6,10 @@ $(function(){
     console.log('jquery loaded');
 
     // add click handlers
-    $('#submit-button').on('click', addEmployee)
-
+    $('#submit-button').on('click', addEmployee);
 
     // dynamic click handlers
+    $('#table-body').on('click', '.delete-button', deleteEmployee);
 })
 
 function addEmployee() {
@@ -55,6 +55,28 @@ function render() {
     }
 }
 
-function formatCurrency(){
+function deleteEmployee(){
+    console.log('deleteEmployee called');
     
+    // remove employee from employees array
+    let employeeRow = $(this).closest('tr');
+    let employeeIndex = employeeRow.index();
+
+    //remove from array
+    employees.splice(employeeIndex, 1);
+    
+    //re-render
+    render();
 }
+
+function formatCurrency(number){
+    // grab that snippet from stackexchange
+
+    return resultStr;
+}
+
+
+// OTHER NOTES
+/*
+    add form validation
+*/
