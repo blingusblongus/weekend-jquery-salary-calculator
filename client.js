@@ -21,22 +21,40 @@ function addEmployee() {
         lastName: $('#last-in').val(),
         id: $('#id-in').val(),
         title: $('#title-in').val(),
-        annualSalary: $('#salary-in').val()
+        annualSalary: parseInt($('#salary-in').val())
     }
 
     //push to employees array
     employees.push(employee);
 
     //render
-    console.log('employees array:', employees)
+    //console.log('employees array:', employees)
+    render();
 
     //empty inputs
     $('.input').val('');
 }
 
 function render() {
-    for (let employee of employees){
-        // add row
+    // clear table
+    $('#table-body').empty();
 
+    // add row for each employee
+    for (let employee of employees){
+        let deleteButton = `<button class="btn-danger delete-button">Delete</button>`;
+        let row = `<tr>
+            <td>${employee.firstName}</td>
+            <td>${employee.lastName}</td>
+            <td>${employee.id}</td>
+            <td>${employee.title}</td>
+            <td>${employee.annualSalary}</td>
+            <td>${deleteButton}</td>
+            </tr>`
+
+        $('#table-body').append(row);
     }
+}
+
+function formatCurrency(){
+    
 }
