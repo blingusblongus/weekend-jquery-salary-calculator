@@ -53,6 +53,16 @@ function render() {
 
         $('#table-body').append(row);
     }
+
+    //update monthly expenses
+    //watch out for when the last employee is deleted
+    let monthlyExpenses = employees.reduce((sum, employee) => {
+        return sum + employee.annualSalary;
+    }, 0);
+
+    $('#monthly-display').html(monthlyExpenses);
+
+    console.log('monthlyExpenses: ', monthlyExpenses);
 }
 
 function deleteEmployee(){
@@ -69,7 +79,7 @@ function deleteEmployee(){
     render();
 }
 
-function formatCurrency(number){
+function currencyToStr(number){
     // grab that snippet from stackexchange
 
     return resultStr;
