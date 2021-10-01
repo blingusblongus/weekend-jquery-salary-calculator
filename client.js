@@ -60,7 +60,7 @@ function render() {
         return sum + employee.annualSalary;
     }, 0);
 
-    $('#monthly-display').html(monthlyExpenses);
+    $('#monthly-display').html(currencyToStr(monthlyExpenses));
 
     console.log('monthlyExpenses: ', monthlyExpenses);
 }
@@ -81,8 +81,10 @@ function deleteEmployee(){
 
 function currencyToStr(number){
     // grab that snippet from stackexchange
-
-    return resultStr;
+    return number.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    });
 }
 
 
