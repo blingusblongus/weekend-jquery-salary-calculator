@@ -4,13 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Salary Calculator</title>
     <script src="jquery-3.6.0.min.js"></script>
     <script src="client.js"></script>
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1">Salary Calculator</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Add Employee</h2>
+            <div>
+                <input type="text" name="first-name" id="first-in" placeholder="First Name">
+                <input type="text" name="last-name" id="last-in" placeholder="Last Name">
+                <input type="text" name="id" id="id-in" placeholder="ID">
+                <input type="text" name="title" id="title-in" placeholder="Title">
+                <input type="text" name="annual-salary" id="salary-in" placeholder="Annual Salary">
+                <div>
+                    <button id="submit-button">Submit</button>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Employees</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Annual Salary</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot>
+                    <tr></tr>
+                </tfoot>
+            </table>
+            <div>
+                Total Monthly: $<span></span>
+            </div>
+        </section>
+    </main>
     
 </body>
 </html>
