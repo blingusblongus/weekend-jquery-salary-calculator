@@ -1,17 +1,47 @@
+:root {
+    --body-color: rgb(240, 248, 255);
+    --table-odd: rgb(176, 212, 198);
+    --table-even: rgb(217, 240, 231);
+    --primary-color: darkslategrey;
+
+}
+
 body {
-    background-color: rgb(195, 226, 255);
+    background-color: var(--body-color);
 }
 
-.employees-container {
-    width: 80%;
-    margin: auto;
-}
-
-.table, th, td {
+th, tr, td {
     border: 1px solid black;
 }
 
-.hidden {
-    visibility: hidden;
+.input {
+    width: 15%;
 }
 
+.text-center {
+    text-align: center;
+}
+
+.bg-primary-custom {
+    background-color: var(--primary-color);
+}
+
+.text-light {
+    color: var(--body-color);
+}
+
+#header {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+/*
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: var(--table-odd); // Choose your own color here
+ }
+
+ .table-striped>tbody>tr:nth-child(even)>td, 
+.table-striped>tbody>tr:nth-child(even)>th {
+   background-color: var(--table-even); // Choose your own color here
+ }
+*/

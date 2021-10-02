@@ -22,6 +22,32 @@ $(function(){
     render();
 })
 
+function render() {
+    // clear table
+    $('#table-body').empty();
+
+    // add row for each employee
+    for (let employee of employees){
+        let deleteButton = `<button class="btn-danger delete-button">Delete</button>`;
+        let row = `<tr>
+            <td>${employee.firstName}</td>
+            <td>${employee.lastName}</td>
+            <td>${employee.id}</td>
+            <td>${employee.title}</td>
+            <td>${employee.annualSalary ? 
+                currencyToStr(employee.annualSalary) : ''}</td>
+            <td>${deleteButton}</td>
+            </tr>`
+
+        $('#table-body').append(row);
+    }
+
+    // recalulate monthly expenses
+    let monthlyExpenses = calculateMonthlyExpenses();
+    //update DOM
+    $('#monthly-display').html(currencyToStr(monthlyExpenses));
+}
+
 function addEmployee() {
     console.log('addEmployee called');
 
@@ -45,36 +71,15 @@ function addEmployee() {
     $('.input').val('');
 }
 
-function render() {
-    // clear table
-    $('#table-body').empty();
-
-    // add row for each employee
-    for (let employee of employees){
-        let deleteButton = `<button class="btn-danger delete-button">Delete</button>`;
-        let row = `<tr>
-            <td>${employee.firstName}</td>
-            <td>${employee.lastName}</td>
-            <td>${employee.id}</td>
-            <td>${employee.title}</td>
-            <td>${employee.annualSalary ? 
-                currencyToStr(employee.annualSalary) : ''}</td>
-            <td>${deleteButton}</td>
-            </tr>`
-
-        $('#table-body').append(row);
-    }
-
-    //update monthly expenses
+function calculateMonthlyExpenses(){
+     //update monthly expenses
     //watch out for when the last employee is deleted
     let monthlyExpenses = employees.reduce((sum, employee) => {
         // sum all in array, but only if !NaN
         return sum + (employee.annualSalary || 0);
     }, 0)/12;
 
-    $('#monthly-display').html(currencyToStr(monthlyExpenses));
-
-    console.log('monthlyExpenses: ', monthlyExpenses);
+    return monthlyExpenses
 }
 
 function deleteEmployee(){
@@ -98,7 +103,6 @@ function currencyToStr(number){
         currency: 'USD'
     });
 }
-
 
 // OTHER NOTES
 /*

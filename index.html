@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1">Salary Calculator</h1>
+    <header class="bg-primary-custom text-light" id="header">
+        <h1 class="text-center">Salary Calculator</h1>
     </header>
     <main>
         <section>
@@ -28,24 +28,24 @@
                 </div>
             </div>
         </section>
-        <section class="containter employees-container">
+        <section class="container employees-container">
             <h2>Employees</h2>
-            <table class="table table-striped table-bordered table-hover">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th>Annual Salary</th>
-                        <th><button disabled class="btn-danger delete-button hidden">Delete</button></th>
-                    </tr>
-                </thead>
-                <tbody id="table-body"></tbody>
-                <tfoot>
-                    <tr></tr>
-                </tfoot>
-            </table>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Annual Salary</th>
+                            <th><button disabled class="btn-danger delete-button hidden">Delete</button></th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
             <div>
                 Total Monthly: <span id="monthly-display">$0</span>
             </div>
