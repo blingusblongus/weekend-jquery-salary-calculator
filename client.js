@@ -3,6 +3,10 @@ console.log('js loaded');
 let employees = [];
 
 //for styling and testing
+employees.push(
+    {firstName:'bill', lastName:'', id:1234, title: 'burglar', annualSalary:20321},
+    {firstName:'bill', lastName:'', id:1234, title: 'burglar', annualSalary:20321}
+);
 
 console.log('employees', employees)
 
@@ -65,9 +69,8 @@ function render() {
     //watch out for when the last employee is deleted
     let monthlyExpenses = employees.reduce((sum, employee) => {
         // sum all in array, but only if !NaN
-        return sum + (employee.annualSalary ? 
-            employee.annualSalary/12 : 0);
-    }, 0);
+        return sum + (employee.annualSalary || 0);
+    }, 0)/12;
 
     $('#monthly-display').html(currencyToStr(monthlyExpenses));
 
