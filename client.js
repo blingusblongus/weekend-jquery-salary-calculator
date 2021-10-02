@@ -47,7 +47,7 @@ function render() {
             <td>${employee.lastName}</td>
             <td>${employee.id}</td>
             <td>${employee.title}</td>
-            <td>${employee.annualSalary}</td>
+            <td>${currencyToStr(employee.annualSalary)}</td>
             <td>${deleteButton}</td>
             </tr>`
 
@@ -57,7 +57,7 @@ function render() {
     //update monthly expenses
     //watch out for when the last employee is deleted
     let monthlyExpenses = employees.reduce((sum, employee) => {
-        return sum + employee.annualSalary;
+        return sum + employee.annualSalary/12;
     }, 0);
 
     $('#monthly-display').html(currencyToStr(monthlyExpenses));
