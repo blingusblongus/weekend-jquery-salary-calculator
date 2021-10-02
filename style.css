@@ -14,6 +14,7 @@ th, tr, td {
     border: 1px solid black;
 }
 
+
 .input {
     width: 15%;
 }
@@ -30,10 +31,21 @@ th, tr, td {
     color: var(--body-color);
 }
 
+.flex-reverse{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 #header {
     padding: 10px;
     margin-bottom: 10px;
 }
+
+#submit-button {
+    margin-right: 20px;
+}
+
+
 /*
 .table-striped>tbody>tr:nth-child(odd)>td, 
 .table-striped>tbody>tr:nth-child(odd)>th {
