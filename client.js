@@ -2,6 +2,10 @@ console.log('js loaded');
 
 let employees = [];
 
+//for styling and testing
+
+console.log('employees', employees)
+
 $(function(){
     console.log('jquery loaded');
 
@@ -10,6 +14,8 @@ $(function(){
 
     // dynamic click handlers
     $('#table-body').on('click', '.delete-button', deleteEmployee);
+
+    render();
 })
 
 function addEmployee() {
@@ -47,7 +53,8 @@ function render() {
             <td>${employee.lastName}</td>
             <td>${employee.id}</td>
             <td>${employee.title}</td>
-            <td>${currencyToStr(employee.annualSalary)}</td>
+            <td>${employee.annualSalary ? 
+                currencyToStr(employee.annualSalary) : ''}</td>
             <td>${deleteButton}</td>
             </tr>`
 
@@ -57,7 +64,9 @@ function render() {
     //update monthly expenses
     //watch out for when the last employee is deleted
     let monthlyExpenses = employees.reduce((sum, employee) => {
-        return sum + employee.annualSalary/12;
+        // sum all in array, but only if !NaN
+        return sum + (employee.annualSalary ? 
+            employee.annualSalary/12 : 0);
     }, 0);
 
     $('#monthly-display').html(currencyToStr(monthlyExpenses));
