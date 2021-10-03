@@ -14,9 +14,7 @@ employees.push(
 );
 */
 
-console.log('employees', employees)
-
-$(function(){
+$(function () {
     console.log('jquery loaded');
 
     // add click handlers
@@ -34,14 +32,14 @@ function render() {
     $('#error-div').empty();
 
     // add row for each employee
-    for (let employee of employees){
+    for (let employee of employees) {
         let deleteButton = `<button class="btn-danger delete-button">Delete</button>`;
         let row = `<tr>
             <td>${employee.firstName}</td>
             <td>${employee.lastName}</td>
             <td>${employee.id}</td>
             <td>${employee.title}</td>
-            <td>${employee.annualSalary ? 
+            <td>${employee.annualSalary ?
                 currencyToStr(employee.annualSalary) : ''}</td>
             <td class="delete-cell">${deleteButton}</td>
             </tr>`
@@ -49,15 +47,13 @@ function render() {
         $('#table-body').append(row);
     }
 
-    // recalulate monthly expenses
+    // recalculate monthly expenses
     let monthlyExpenses = calculateMonthlyExpenses();
     //update DOM
     $('#monthly-display').html(currencyToStr(monthlyExpenses));
 }
 
 function addEmployee() {
-    console.log('addEmployee called');
-
     //get values from dom
     let employee = {
         firstName: $('#first-in').val(),
@@ -70,8 +66,8 @@ function addEmployee() {
     //validate
     let error = validate(employee);
     let errorDiv = $('#error-container');
- 
-    switch(error){
+
+    switch (error) {
         case errors.noInput:
             //write error message and terminate
             errorDiv.html(errors.noInput);
@@ -95,28 +91,28 @@ function addEmployee() {
     $('.input').val('');
 }
 
-function calculateMonthlyExpenses(){
-     //update monthly expenses
+function calculateMonthlyExpenses() {
+    //update monthly expenses
     //watch out for when the last employee is deleted
     let monthlyExpenses = employees.reduce((sum, employee) => {
         // sum all in array, but only if !NaN
         return sum + (employee.annualSalary || 0);
-    }, 0)/12;
+    }, 0) / 12;
 
-    return monthlyExpenses
+    return monthlyExpenses;
 }
 
-function deleteEmployee(){
+function deleteEmployee() {
     //remove from array
     let employeeRow = $(this).closest('tr');
     let employeeIndex = employeeRow.index();
     employees.splice(employeeIndex, 1);
-    
+
     //re-render
     render();
 }
 
-function currencyToStr(number){
+function currencyToStr(number) {
     // grab that snippet from stackexchange
     return number.toLocaleString('en-US', {
         style: 'currency',
@@ -124,24 +120,24 @@ function currencyToStr(number){
     });
 }
 
-function validate(inputObj){
-
+function validate(inputObj) {
     //loop through object keys and return error message if no fields
     let infoPresent = false;
-    for(let key in inputObj){
-        if(inputObj[key]){
+    for (let key in inputObj) {
+        if (inputObj[key]) {
             infoPresent = true;
             break;
         }
     }
 
     //check for missing salary
-    if(!inputObj.annualSalary && infoPresent){
+    if (!inputObj.annualSalary && infoPresent) {
         return errors.noSalary;
-    }else if(infoPresent){
+    } else if (infoPresent) {
         //no errors detected
         return;
     }
 
+    //no fields filled, return noInput error
     return errors.noInput;
 }
