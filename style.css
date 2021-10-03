@@ -66,6 +66,10 @@ th, tr, td {
 
 .delete-button {
     justify-self: center;
+    width: 100%;
+}
+
+.hidden {
     visibility: hidden;
 }
 
