@@ -2,6 +2,7 @@
     --table-odd: rgb(176, 212, 198);
     --table-even: rgb(217, 240, 231);
     --primary-color: darkslategrey;
+    --primary-light: rgb(171, 207, 195);
     --secondary-color: rgb(255, 253, 250);
 
 }
@@ -59,12 +60,15 @@ th, tr, td {
 }
 
 .delete-cell {
-    display: flex;
     justify-content: center;
 }
 
 .delete-button {
     justify-self: center;
+}
+
+.footer-cell {
+    height: 20px;
 }
 
 #header {

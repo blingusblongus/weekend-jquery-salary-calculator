@@ -3,10 +3,12 @@ console.log('js loaded');
 let employees = [];
 
 //for styling and testing
+/*
 employees.push(
     {firstName:'bill', lastName:'', id:1234, title: 'burglar', annualSalary:20321},
     {firstName:'bill', lastName:'', id:1234, title: 'burglar', annualSalary:20321}
 );
+*/
 
 console.log('employees', employees)
 
