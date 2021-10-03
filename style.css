@@ -61,10 +61,12 @@ th, tr, td {
 
 .delete-cell {
     justify-content: center;
+    display: hidden;
 }
 
 .delete-button {
     justify-self: center;
+    visibility: hidden;
 }
 
 .footer-cell {
