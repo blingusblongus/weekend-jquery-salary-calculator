@@ -36,7 +36,7 @@ function render() {
             <td>${employee.title}</td>
             <td>${employee.annualSalary ? 
                 currencyToStr(employee.annualSalary) : ''}</td>
-            <td>${deleteButton}</td>
+            <td class="delete-cell">${deleteButton}</td>
             </tr>`
 
         $('#table-body').append(row);

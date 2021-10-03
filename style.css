@@ -1,22 +1,44 @@
 :root {
-    --body-color: rgb(240, 248, 255);
     --table-odd: rgb(176, 212, 198);
     --table-even: rgb(217, 240, 231);
     --primary-color: darkslategrey;
+    --secondary-color: rgb(255, 253, 250);
 
 }
 
 body {
-    background-color: var(--body-color);
+    background-color: var(--secondary-color);
 }
 
 th, tr, td {
     border: 1px solid black;
 }
 
+.table th {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
 
-.input {
-    width: 15%;
+.main-content {
+    max-width: 80vw;
+    margin: 30px auto auto auto;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+
+.input-container > input {
+    width: 19%;
+    
+}
+
+.employees-container {
+    padding: 0;
+    margin: 0;
 }
 
 .text-center {
@@ -36,13 +58,23 @@ th, tr, td {
     flex-direction: row-reverse;
 }
 
+.delete-cell {
+    display: flex;
+    justify-content: center;
+}
+
+.delete-button {
+    justify-self: center;
+}
+
 #header {
     padding: 10px;
     margin-bottom: 10px;
 }
 
 #submit-button {
-    margin-right: 20px;
+    margin-top: 5px;
+    font-size: 140%;
 }
 
 
