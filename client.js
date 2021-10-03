@@ -1,6 +1,9 @@
 console.log('js loaded');
 
 let employees = [];
+let errors = {
+    noInput: 'Fill out at least one field'
+}
 
 //for styling and testing
 /*
@@ -25,8 +28,9 @@ $(function(){
 })
 
 function render() {
-    // clear table
+    // clear table and errorDiv
     $('#table-body').empty();
+    $('#error-div').empty();
 
     // add row for each employee
     for (let employee of employees){
@@ -60,6 +64,19 @@ function addEmployee() {
         id: $('#id-in').val(),
         title: $('#title-in').val(),
         annualSalary: parseInt($('#salary-in').val())
+    }
+
+    //validate
+    let error = validate(employee);
+    let errorDiv = $('#error-container');
+ 
+    switch(error){
+        case errors.noInput:
+            //write error message and terminate
+            errorDiv.html(errors.noInput);
+            return;
+        default:
+            errorDiv.empty();
     }
 
     //push to employees array
@@ -104,6 +121,17 @@ function currencyToStr(number){
         style: 'currency',
         currency: 'USD'
     });
+}
+
+function validate(inputObj){
+
+    //loop through object keys and return error message if no fields
+    for(let key in inputObj){
+        if(inputObj[key]){
+            return;
+        }
+    }
+    return errors.noInput;
 }
 
 // OTHER NOTES

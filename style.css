@@ -59,6 +59,11 @@ th, tr, td {
     flex-direction: row-reverse;
 }
 
+.flex-align-center {
+    display: flex;
+    align-items: center;
+}
+
 .delete-cell {
     justify-content: center;
     display: hidden;
@@ -85,6 +90,15 @@ th, tr, td {
 #submit-button {
     margin-top: 5px;
     font-size: 140%;
+}
+
+#error-container {
+    padding-right: 20px;
+    color: red;
+}
+
+#submit-container {
+    padding-top: 10px;
 }
 
 
