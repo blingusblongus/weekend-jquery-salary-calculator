@@ -2,7 +2,8 @@ console.log('js loaded');
 
 let employees = [];
 let errors = {
-    noInput: 'Fill out at least one field'
+    noInput: 'Enter employee info above',
+    noSalary: 'Must include employee salary'
 }
 
 //for styling and testing
@@ -75,7 +76,11 @@ function addEmployee() {
             //write error message and terminate
             errorDiv.html(errors.noInput);
             return;
+        case errors.noSalary:
+            errorDiv.html(errors.noSalary);
+            return;
         default:
+            //clear error messages if there are any;
             errorDiv.empty();
     }
 
@@ -102,13 +107,9 @@ function calculateMonthlyExpenses(){
 }
 
 function deleteEmployee(){
-    console.log('deleteEmployee called');
-    
-    // remove employee from employees array
+    //remove from array
     let employeeRow = $(this).closest('tr');
     let employeeIndex = employeeRow.index();
-
-    //remove from array
     employees.splice(employeeIndex, 1);
     
     //re-render
@@ -126,15 +127,21 @@ function currencyToStr(number){
 function validate(inputObj){
 
     //loop through object keys and return error message if no fields
+    let infoPresent = false;
     for(let key in inputObj){
         if(inputObj[key]){
-            return;
+            infoPresent = true;
+            break;
         }
     }
+
+    //check for missing salary
+    if(!inputObj.annualSalary && infoPresent){
+        return errors.noSalary;
+    }else if(infoPresent){
+        //no errors detected
+        return;
+    }
+
     return errors.noInput;
 }
-
-// OTHER NOTES
-/*
-    add form validation
-*/
