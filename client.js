@@ -33,8 +33,15 @@ function render() {
 
     // add row for each employee
     for (let employee of employees) {
+        let employeeMonthly = employee.annualSalary / 12;
+        
+        let dangerClass;
+        if(employeeMonthly > 20000){
+            dangerClass = 'danger';
+        }
+
         let deleteButton = `<button class="btn-danger delete-button">Delete</button>`;
-        let row = `<tr>
+        let row = `<tr class=${dangerClass || ""}>
             <td>${employee.firstName}</td>
             <td>${employee.lastName}</td>
             <td>${employee.id}</td>

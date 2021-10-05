@@ -81,6 +81,10 @@ th, tr, td {
     height: 20px;
 }
 
+.danger {
+    background-color: red;
+}
+
 #header {
     padding: 10px;
     margin-bottom: 10px;
